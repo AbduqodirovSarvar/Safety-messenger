@@ -1,0 +1,34 @@
+<div class="login-page" [formGroup]="loginForm">
+  <div class="glass-card">
+    <h3>Safety Chat</h3>
+    <h2>Login</h2>
+    <div>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="text" formControlName="email" pInputText placeholder="example@gmail.com" />
+        <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+          <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+          <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" formControlName="password" pInputText placeholder="********" />
+        <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
+          <small *ngIf="loginForm?.get('password')?.errors?.['required']">Password is required.</small>
+          <small *ngIf="loginForm?.get('password')?.errors?.['pattern']">
+            Password must be at least 8 characters long and contain a number.
+          </small>
+        </div>
+      </div>
+    </div>
+    <p-progressSpinner *ngIf="loader" styleClass="custom-spinner"></p-progressSpinner>
+    <button pButton label="Sign in" class="login-button" (click)="onLogin()"></button>
+    <div>
+      <a href="/forget-password" class="forgot-password">Forgot Password?</a>
+    </div>
+    <p class="register">
+      Do not have an account yet? <a href="/register">Register for free</a>
+    </p>
+  </div>
+</div>

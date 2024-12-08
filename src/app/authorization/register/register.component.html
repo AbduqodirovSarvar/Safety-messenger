@@ -1,0 +1,68 @@
+<div class="login-page" [formGroup]="registerForm">
+    <div class="glass-card">
+      <h3>Safety Chat</h3>
+      <h2>Login</h2>
+      <div>
+        <div class="input-group">
+            <label>FirstName</label>
+            <input type="text" formControlName="FirstName" pInputText placeholder="example@gmail.com" />
+            <!-- <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+              <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+            </div> -->
+          </div>
+          <div class="input-group">
+            <label>LastName</label>
+            <input type="text" formControlName="LastName" pInputText placeholder="example@gmail.com" />
+            <!-- <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+              <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+            </div> -->
+          </div>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="text" formControlName="Email" pInputText placeholder="example@gmail.com" />
+          <!-- <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+            <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+            <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+          </div> -->
+        </div>
+        <div class="input-group">
+            <label>Email Confirmation code</label>
+            <input type="text" formControlName="ConfirmCode" pInputText placeholder="example@gmail.com" />
+            <!-- <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+              <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+            </div> -->
+          </div>
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" formControlName="Password" pInputText placeholder="********" />
+          <!-- <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched">
+            <small *ngIf="loginForm?.get('password')?.errors?.['required']">Password is required.</small>
+            <small *ngIf="loginForm?.get('password')?.errors?.['pattern']">
+              Password must be at least 8 characters long and contain a number.
+            </small>
+          </div> -->
+        </div>
+        <div class="input-group">
+            <label>ReEnter the password</label>
+            <input type="password" formControlName="ConfirmPassword" pInputText placeholder="********" />
+            <!-- <div *ngIf="loginForm?.get('email')?.invalid && loginForm?.get('email')?.touched">
+              <small *ngIf="loginForm?.get('email')?.errors?.['required']">Email is required.</small>
+              <small *ngIf="loginForm?.get('email')?.errors?.['email']">Invalid email format.</small>
+            </div> -->
+          </div>
+          <div class="input-group">
+            <label>Photo</label>
+            <input type="text" formControlName="Photo" pInputText placeholder="example@gmail.com" />
+            <div>
+              <small>If you have</small>
+            </div>
+          </div>
+      </div>
+      <p-progressSpinner *ngIf="loader" styleClass="custom-spinner"></p-progressSpinner>
+      <button pButton label="Sign in" class="login-button" (click)="onRegister()"></button>
+    </div>
+  </div>
+  

@@ -1,0 +1,88 @@
+<div class="messaging-app">
+    <div class="menu-bar">
+        <div class="menu-items">
+            <div class="menu-item" (click)="toggleMenu()">
+              <i class="pi pi-bars"></i>
+            </div>
+        </div>
+        <div *ngIf="!sidebarOpen" class="menu-contact-items">
+          <div class="menu-item" *ngFor="let contact of contacts">
+            <img class="profile-image" [src]="'https://picsum.photos/200/200'" alt="Contact Image">
+          </div>
+        </div>
+        <div>
+            <div class="menu-items">
+                <div class="menu-item"  (click)="clickSetting()">
+                  <i class="pi pi-spin pi-cog"></i>
+                </div>
+              </div>
+              <div class="menu-items">
+                <div class="menu-item" (click)="clickSetting()">
+                  <i class="pi pi-sign-out"></i>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div style="border: 1px solid;"></div>
+    <div *ngIf="sidebarOpen" class="sidebar">
+      <div class="sidebar-header">
+        <div class="profile-image">
+          <img class="profile-image"
+            [src]="'https://picsum.photos/200/200'"
+            alt="profile-image"
+            (error)="imageError = true"
+            *ngIf="!imageError"
+          />
+          <i *ngIf="imageError" class="pi pi-user"></i>
+        </div>        
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+          </div>
+      </div>
+      <div class="contacts">
+        <div class="contact" *ngFor="let contact of contacts">
+          <img class="profile-image" [src]="'https://picsum.photos/200/200'" alt="Contact Image">
+          <div class="contact-info">
+            <h4>{{ contact.name }}</h4>
+            <p>{{ contact.lastMessage | truncate: 30 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-window">
+      <div class="chat-header">
+        <h4>{{ selectedContact.name }}</h4>
+        <div class="profile-image">
+          <img
+            [src]="'https://picsum.photos/200/200'"
+            alt="profile-image"
+            (error)="selectedUserImageError = true"
+            *ngIf="!selectedUserImageError"
+          />
+          <i *ngIf="selectedUserImageError" class="pi pi-user"></i>
+        </div>
+      </div>
+      <div class="chat-messages">
+        <div class="message" *ngFor="let message of messages.slice().reverse()">
+          <div [ngClass]="{'right-message': message.id === 1, 'left-message': message.id !== 1}">
+            <img src="https://picsum.photos/200/200" class="profile-image" alt="">
+            <div style="background-color:#929292; border-radius: 0.25rem; padding: 0.5rem; max-width: 70%;">
+              <p>{{ message.text }}</p>
+              <span class="msg-time">{{ message.time | date: 'short' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>      
+      <div class="chat-input">
+        <textarea 
+          [(ngModel)]="newMessage" 
+          placeholder="Type your message here..." 
+          (keydown.enter)="sendMessage(); $event.preventDefault()"
+          rows="4" 
+          cols="50"
+        ></textarea>
+        <i class="pi pi-send" (click)="sendMessage()"></i>
+      </div>      
+    </div>
+  </div>
+  

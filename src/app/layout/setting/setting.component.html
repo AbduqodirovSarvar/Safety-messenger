@@ -1,0 +1,81 @@
+<div class="profile-container">
+    <div class="profile-header">
+      <div class="avatar">
+        <span>VK</span>
+      </div>
+      <div class="user-info">
+        <h2>Velda Kiara</h2>
+        <p class="plan">Pro Plan</p>
+      </div>
+    </div>
+  
+    <form (ngSubmit)="onSubmit()" class="profile-form">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          id="firstName"
+          type="text"
+          [(ngModel)]="user.firstName"
+          name="firstName"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          id="lastName"
+          type="text"
+          [(ngModel)]="user.lastName"
+          name="lastName"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="user.email"
+          name="email"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="newPassword">New Password</label>
+        <div class="password-wrapper">
+          <input
+            id="newPassword"
+            type="{{ showPassword ? 'text' : 'password' }}"
+            [(ngModel)]="user.newPassword"
+            name="newPassword"
+          />
+          <button type="button" (click)="togglePasswordVisibility()">
+            <i class="icon">{{ showPassword ? '🙈' : '👁️' }}</i>
+          </button>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-wrapper">
+          <input
+            id="confirmPassword"
+            type="{{ showConfirmPassword ? 'text' : 'password' }}"
+            [(ngModel)]="user.confirmPassword"
+            name="confirmPassword"
+          />
+          <button type="button" (click)="toggleConfirmPasswordVisibility()">
+            <i class="icon">{{ showConfirmPassword ? '🙈' : '👁️' }}</i>
+          </button>
+        </div>
+      </div>
+  
+      <button type="submit" class="save-button" [disabled]="!isValidForm()">
+        Save
+      </button>
+    </form>
+  </div>
+  
